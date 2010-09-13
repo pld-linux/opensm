@@ -7,10 +7,14 @@ License:	BSD or GPL v2
 Group:		Daemons
 Source0:	http://www.openfabrics.org/downloads/management/%{name}-%{version}.tar.gz
 # Source0-md5:	3880d2f467b6f2d5fada941c7f8baeb7
+Patch0:		%{name}-link.patch
 URL:		http://www.openfabrics.org/
+BuildRequires:	autoconf >= 2.57
+BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	libibumad-devel
+BuildRequires:	libtool
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -62,8 +66,14 @@ Ten pakiet zawiera statyczne biblioteki OpenSM.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal} -I config
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure
 %{__make}
 
