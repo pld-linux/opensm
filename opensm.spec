@@ -1,12 +1,12 @@
 Summary:	OpenFabrics Alliance InfiniBand MAD library
 Summary(pl.UTF-8):	Biblioteka OpenFabrics Alliance InfiniBand MAD
 Name:		opensm
-Version:	3.3.7
+Version:	3.3.9
 Release:	1
 License:	BSD or GPL v2
 Group:		Daemons
 Source0:	http://www.openfabrics.org/downloads/management/%{name}-%{version}.tar.gz
-# Source0-md5:	3880d2f467b6f2d5fada941c7f8baeb7
+# Source0-md5:	5e9b461073f7cfbafe0207e014796f9f
 Patch0:		%{name}-link.patch
 URL:		http://www.openfabrics.org/
 BuildRequires:	autoconf >= 2.57
