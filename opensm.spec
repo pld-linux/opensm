@@ -18,6 +18,9 @@ BuildRequires:	libtool
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+# these libs refer to symbols in each other
+%define		skip_post_check_so	libopensm\.so.* libosmvendor\.so.*
+
 %description
 libibmad provides low layer InfiniBand functions for use by the IB
 diagnostic and management programs. These include MAD, SA, SMP, and

@@ -9,3 +9,13 @@
  libosmvendor_la_LDFLAGS = -version-info $(osmvendor_api_version) \
  	-export-dynamic $(libosmvendor_version_script)
  libosmvendor_la_DEPENDENCIES = $(srcdir)/libosmvendor.map
+--- opensm-3.3.9/opensm/Makefile.am.orig	2011-03-07 08:54:55.000000000 +0100
++++ opensm-3.3.9/opensm/Makefile.am	2011-04-20 20:23:55.123277689 +0200
+@@ -22,6 +22,7 @@
+ libopensm_la_SOURCES = osm_log.c osm_mad_pool.c osm_helper.c
+ libopensm_la_LDFLAGS = -version-info $(opensm_api_version) \
+ 	-export-dynamic $(libopensm_version_script)
++libopensm_la_LIBADD = $(top_builddir)/complib/libosmcomp.la
+ libopensm_la_DEPENDENCIES = $(srcdir)/libopensm.map
+ 
+ sbin_PROGRAMS = opensm
