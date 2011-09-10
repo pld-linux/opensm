@@ -1,12 +1,12 @@
 Summary:	OpenFabrics Alliance InfiniBand MAD library
 Summary(pl.UTF-8):	Biblioteka OpenFabrics Alliance InfiniBand MAD
 Name:		opensm
-Version:	3.3.9
+Version:	3.3.11
 Release:	1
 License:	BSD or GPL v2
 Group:		Daemons
 Source0:	http://www.openfabrics.org/downloads/management/%{name}-%{version}.tar.gz
-# Source0-md5:	5e9b461073f7cfbafe0207e014796f9f
+# Source0-md5:	80ae77e919111761f022c10ca1405db3
 Patch0:		%{name}-link.patch
 URL:		http://www.openfabrics.org/
 BuildRequires:	autoconf >= 2.57
@@ -100,8 +100,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(754,root,root) /etc/rc.d/init.d/opensmd
 %attr(755,root,root) %{_sbindir}/opensm
 %attr(755,root,root) %{_sbindir}/osmtest
+%{_mandir}/man5/torus-2QoS.conf.5*
 %{_mandir}/man8/opensm.8*
 %{_mandir}/man8/osmtest.8*
+%{_mandir}/man8/torus-2QoS.8*
 
 %files libs
 %defattr(644,root,root,755)
