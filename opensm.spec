@@ -1,12 +1,12 @@
-Summary:	OpenFabrics Alliance InfiniBand MAD library
-Summary(pl.UTF-8):	Biblioteka OpenFabrics Alliance InfiniBand MAD
+Summary:	OpenSM - InfiniBand Subnet Manager and Administrator
+Summary(pl.UTF-8):	OpenSM - zarządca i administrator podsieci InfiniBand
 Name:		opensm
-Version:	3.3.11
+Version:	3.3.12
 Release:	1
 License:	BSD or GPL v2
 Group:		Daemons
 Source0:	http://www.openfabrics.org/downloads/management/%{name}-%{version}.tar.gz
-# Source0-md5:	80ae77e919111761f022c10ca1405db3
+# Source0-md5:	66beeccf6b16550609b37d588c0589ee
 Patch0:		%{name}-link.patch
 URL:		http://www.openfabrics.org/
 BuildRequires:	autoconf >= 2.57
@@ -22,14 +22,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		skip_post_check_so	libopensm\.so.* libosmvendor\.so.*
 
 %description
-libibmad provides low layer InfiniBand functions for use by the IB
-diagnostic and management programs. These include MAD, SA, SMP, and
-other basic IB functions.
+OpenSM provides an implementation for an InfiniBand Subnet Manager and
+Administrator. Such a software entity is required to run for in order
+to initialize the InfiniBand hardware (at least one per each
+InfiniBand subnet).
 
 %description -l pl.UTF-8
-libibmad to biblioteka udostępniająca niskopoziomowe funkcje
-InfiniBand przeznaczone dla programów diagnostycznych i zarządzających
-IB. Obejmuje MAD, SA, SMP i inne podstawowe funkcje IB.
+OpenSM zapewnia implementację zarządcy i administratora podsieci
+InfiniBand (InfiniBand Subnet Manager). Takie oprogramowanie musi być
+uruchomione w celu zainicjowania sprzętu InfiniBand (przynajmniej
+jedna instancja w każdej podsieci InfiniBand).
 
 %package libs
 Summary:	OpenSM (InfiniBand Subnet Manager) libraries
