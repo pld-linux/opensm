@@ -1,12 +1,12 @@
 Summary:	OpenSM - InfiniBand Subnet Manager and Administrator
 Summary(pl.UTF-8):	OpenSM - zarządca i administrator podsieci InfiniBand
 Name:		opensm
-Version:	3.3.12
+Version:	3.3.13
 Release:	1
 License:	BSD or GPL v2
 Group:		Daemons
 Source0:	http://www.openfabrics.org/downloads/management/%{name}-%{version}.tar.gz
-# Source0-md5:	66beeccf6b16550609b37d588c0589ee
+# Source0-md5:	6e667badb126a5e21ea2ab90cd950226
 Patch0:		%{name}-link.patch
 URL:		http://www.openfabrics.org/
 BuildRequires:	autoconf >= 2.57
@@ -111,7 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog README doc/*.txt
 %attr(755,root,root) %{_libdir}/libopensm.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libopensm.so.4
+%attr(755,root,root) %ghost %{_libdir}/libopensm.so.5
 %attr(755,root,root) %{_libdir}/libosmcomp.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libosmcomp.so.3
 %attr(755,root,root) %{_libdir}/libosmvendor.so.*.*.*
