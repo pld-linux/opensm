@@ -1,14 +1,14 @@
 Summary:	OpenSM - InfiniBand Subnet Manager and Administrator
 Summary(pl.UTF-8):	OpenSM - zarządca i administrator podsieci InfiniBand
 Name:		opensm
-Version:	3.3.18
+Version:	3.3.19
 Release:	1
 License:	BSD or GPL v2
 Group:		Daemons
 Source0:	https://www.openfabrics.org/downloads/management/%{name}-%{version}.tar.gz
-# Source0-md5:	642c2a2fda102a7d11add773a89265af
+# Source0-md5:	b41a64985fc3050b934ce6082cbac1be
 Patch0:		%{name}-link.patch
-URL:		http://www.openfabrics.org/
+URL:		https://www.openfabrics.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	bison
@@ -16,7 +16,6 @@ BuildRequires:	flex
 BuildRequires:	libibumad-devel
 BuildRequires:	libtool
 BuildRequires:	rpmbuild(macros) >= 1.228
-Requires(post):	/sbin/ldconfig
 Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	rc-scripts
@@ -99,7 +98,6 @@ mv -f $RPM_BUILD_ROOT/etc/init.d $RPM_BUILD_ROOT/etc/rc.d
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/ldconfig
 /sbin/chkconfig --add opensmd
 %service opensmd restart
 
@@ -109,7 +107,8 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del opensmd
 fi
 
-%postun -p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
