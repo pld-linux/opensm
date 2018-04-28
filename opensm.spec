@@ -2,7 +2,7 @@ Summary:	OpenSM - InfiniBand Subnet Manager and Administrator
 Summary(pl.UTF-8):	OpenSM - zarządca i administrator podsieci InfiniBand
 Name:		opensm
 Version:	3.3.20
-Release:	1
+Release:	2
 License:	BSD or GPL v2
 Group:		Daemons
 Source0:	https://www.openfabrics.org/downloads/management/%{name}-%{version}.tar.gz
