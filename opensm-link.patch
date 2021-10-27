@@ -1,21 +1,22 @@
---- opensm-3.3.7/libvendor/Makefile.am.orig	2009-05-11 11:11:31.000000000 +0200
-+++ opensm-3.3.7/libvendor/Makefile.am	2010-09-13 08:37:48.732562329 +0200
-@@ -73,7 +73,7 @@
+--- opensm-3.3.24/libvendor/Makefile.am.orig	2021-10-25 22:37:54.888290162 +0200
++++ opensm-3.3.24/libvendor/Makefile.am	2021-10-26 06:18:54.465277747 +0200
+@@ -77,7 +77,7 @@ HDRS =$(COMM_HDRS) $(srcdir)/../include/
  	$(srcdir)/../include/vendor/osm_pkt_randomizer.h
  endif
  
--libosmvendor_la_LIBADD = -L../complib -losmcomp
-+libosmvendor_la_LIBADD = $(top_builddir)/complib/libosmcomp.la
+-libosmvendor_la_LIBADD = -L../complib -losmcomp -L../libopensm -lopensm
++libosmvendor_la_LIBADD = $(top_builddir)/complib/libosmcomp.la $(top_builddir)/libopensm/libopensm.la
  libosmvendor_la_LDFLAGS = -version-info $(osmvendor_api_version) \
  	-export-dynamic $(libosmvendor_version_script)
  libosmvendor_la_DEPENDENCIES = $(srcdir)/libosmvendor.map
---- opensm-3.3.9/opensm/Makefile.am.orig	2011-03-07 08:54:55.000000000 +0100
-+++ opensm-3.3.9/opensm/Makefile.am	2011-04-20 20:23:55.123277689 +0200
-@@ -22,6 +22,7 @@
- libopensm_la_SOURCES = osm_log.c osm_mad_pool.c osm_helper.c
- libopensm_la_LDFLAGS = -version-info $(opensm_api_version) \
- 	-export-dynamic $(libopensm_version_script)
-+libopensm_la_LIBADD = $(top_builddir)/complib/libosmcomp.la
- libopensm_la_DEPENDENCIES = $(srcdir)/libopensm.map
+--- opensm-3.3.24/libopensm/Makefile.am.orig	2021-06-14 11:57:50.000000000 +0200
++++ opensm-3.3.24/libopensm/Makefile.am	2021-10-26 06:20:25.341452095 +0200
+@@ -21,7 +21,7 @@ opensm_api_version=$(shell grep LIBVERSI
  
- sbin_PROGRAMS = opensm
+ libopensm_la_SOURCES = osm_log.c osm_helper.c
+ 
+-libopensm_la_LIBADD = -L../complib -losmcomp
++libopensm_la_LIBADD = $(top_builddir)/complib/libosmcomp.la
+ libopensm_la_LDFLAGS = -version-info $(opensm_api_version) \
+ 	 -export-dynamic $(libopensm_version_script)
+ libopensm_la_DEPENDENCIES = $(srcdir)/libopensm.map

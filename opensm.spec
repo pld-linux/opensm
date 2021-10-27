@@ -1,12 +1,13 @@
 Summary:	OpenSM - InfiniBand Subnet Manager and Administrator
 Summary(pl.UTF-8):	OpenSM - zarządca i administrator podsieci InfiniBand
 Name:		opensm
-Version:	3.3.20
-Release:	2
+Version:	3.3.24
+Release:	1
 License:	BSD or GPL v2
 Group:		Daemons
-Source0:	https://www.openfabrics.org/downloads/management/%{name}-%{version}.tar.gz
-# Source0-md5:	ed615b4681e94ef2e13a5de773ab89a3
+#Source0Download: https://github.com/linux-rdma/opensm/releases
+Source0:	https://github.com/linux-rdma/opensm/releases/download/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	e469eb593366b22cea7415a860886338
 Patch0:		%{name}-link.patch
 URL:		https://www.openfabrics.org/
 BuildRequires:	autoconf >= 2.57
@@ -15,6 +16,7 @@ BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	libibumad-devel
 BuildRequires:	libtool
+BuildRequires:	metis-devel
 BuildRequires:	rpmbuild(macros) >= 1.228
 Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name}-libs = %{version}-%{release}
@@ -92,7 +94,7 @@ install -d $RPM_BUILD_ROOT{%{_sysconfdir}/opensm,/etc/rc.d}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv -f $RPM_BUILD_ROOT/etc/init.d $RPM_BUILD_ROOT/etc/rc.d
+%{__mv} $RPM_BUILD_ROOT/etc/init.d $RPM_BUILD_ROOT/etc/rc.d
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -124,11 +126,11 @@ fi
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog README doc/*.txt
 %attr(755,root,root) %{_libdir}/libopensm.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libopensm.so.5
+%attr(755,root,root) %ghost %{_libdir}/libopensm.so.9
 %attr(755,root,root) %{_libdir}/libosmcomp.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libosmcomp.so.3
+%attr(755,root,root) %ghost %{_libdir}/libosmcomp.so.5
 %attr(755,root,root) %{_libdir}/libosmvendor.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libosmvendor.so.4
+%attr(755,root,root) %ghost %{_libdir}/libosmvendor.so.5
 %dir %{_sysconfdir}/opensm
 
 %files devel
